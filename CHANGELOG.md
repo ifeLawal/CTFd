@@ -15,9 +15,9 @@
   - Does not currently apply to SSO/auth provider or API based account creation
 - Prevent users from participating with challenges if their profile is not complete (i.e. haven't filled out all required custom fields)
 - Fixed an issue where admins couldn't see some challenges in the add requirements interface
-- Fixed an issue where a challenge couldn't be accessed beacuse it had prerequisites on a deleted challenge
+- Fixed an issue where a challenge couldn't be accessed because it had prerequisites on a deleted challenge
 - Fixed an issue where User profiles could not be loaded in the Admin Panel due to missing/invalid Tracking IP addresses
-- Fixed an issue where users with authentication provider accoutns would get an error when attempting to login
+- Fixed an issue where users with authentication provider accounts would get an error when attempting to login
 - Fixed an issue where MajorLeagueCyber config from config.ini was not being respected
 
 **API**
@@ -71,7 +71,7 @@
 
 - Make `.dockerignore` ignore `node_modules` in any subdirectory
 - Added `solves` and `solved_by_me` fields to the Swagger documentation for Challenges
-- Dynamic challenges will now take their initial valuation from the `inital` keyword instead of the previous `value` keyword.
+- Dynamic challenges will now take their initial valuation from the `initial` keyword instead of the previous `value` keyword.
   - This allows ctfcli to manage dynamic challenges. See https://github.com/CTFd/CTFd/issues/1875
 - Added a timestamp to a CTFd export's filename
 - Deleting uploads under the Filesystem upload provider will now delete the parent folder as well as the target file
@@ -97,7 +97,7 @@
 - Prevent admins from deleting themselves through `DELETE /api/v1/users/[user_id]`
 - Add length checking to some sensitive fields in the Pages and Challenges schemas
 - Fix issue where `PATCH /api/v1/users[user_id]` returned a list instead of a dict
-- Fix exception that occured on demoting admins through `PATCH /api/v1/users[user_id]`
+- Fix exception that occurred on demoting admins through `PATCH /api/v1/users[user_id]`
 - Add `team_id` to `GET /api/v1/users` to determine if a user is already in a team
 - Provide a more useful error message when using an expired token
 
@@ -174,7 +174,7 @@
 - Fixed issue in teams mode where a user couldn't unlock a hint despite their team having enough points
   - The fix for this is essentially to allow the user's points to go negative
 - Imports have been made more stable
-  - This is primarily done by killing MySQL processes that are locking metadta
+  - This is primarily done by killing MySQL processes that are locking metadata
   - This is a subpar approach but it seems to be the only solution to avoid a metadata lock in MySQL. This approach did not appear to be needed under Postgres or SQLite
 
 **API**
@@ -355,7 +355,7 @@
 
 ## Changelog Summary
 
-The CTFd v3 Changelog represents the changes from v2.5.0 to v3. It is a summarized version of the changes that occured in all CTFd v3 beta/alpha releases.
+The CTFd v3 Changelog represents the changes from v2.5.0 to v3. It is a summarized version of the changes that occurred in all CTFd v3 beta/alpha releases.
 
 CTFd v3 contains some breaking changes but many plugins remain compatible. Themes will need some minor changes to be compatible with v3.
 
@@ -461,7 +461,7 @@ Instead of editting `config.py` directly, it's now a better idea to edit `config
   - `challenge.html` now specifies what's required and what's rendered by the theme. This allows the challenge plugin to avoid having to deal with aspects of the challenge besides the description and input.
   - A more complete migration guide will be provided when CTFd v3 leaves beta
 - Display current attempt count in challenge view when max attempts is enabled
-- `get_standings()`, `get_team_stanadings()`, `get_user_standings()` now has a fields keyword argument that allows for specificying additional fields that SQLAlchemy should return when building the response set.
+- `get_standings()`, `get_team_standings()`, `get_user_standings()` now has a fields keyword argument that allows for specifying additional fields that SQLAlchemy should return when building the response set.
   - Useful for gathering additional data when building scoreboard pages
 - Flags can now control the message that is shown to the user by raising `FlagException`
 - Fix `override_template()` functionality
@@ -484,7 +484,7 @@ Instead of editting `config.py` directly, it's now a better idea to edit `config
 - Certain static strings have been converted into Enums for better re-useability throughout the code base
 - Switch to using Github Actions for testing and linting
 - Better handling of missing challenge types. Missing challenge types no longer bring down all other challenges.
-- Documentation has been seperated out into a seperate repo (https://github.com/CTFd/docs).
+- Documentation has been separated out into a separate repo (https://github.com/CTFd/docs).
 - Documentation hosting has moved from ReadTheDocs to Netlify
 - Any links in the codebase to help.ctfd.io have been changed to docs.ctfd.io.
 
@@ -493,7 +493,7 @@ Instead of editting `config.py` directly, it's now a better idea to edit `config
 **General**
 
 - Render Hint content on the server side and provide it in the Hint API response
-  - In a sense this would deprecate the `content` field but it's left in for backwards compatability
+  - In a sense this would deprecate the `content` field but it's left in for backwards compatibility
 
 **API**
 
@@ -537,7 +537,7 @@ Instead of editting `config.py` directly, it's now a better idea to edit `config
 
 **Documentation**
 
-- Documentation has been seperated out into a seperate repo (https://github.com/CTFd/docs).
+- Documentation has been separated out into a separate repo (https://github.com/CTFd/docs).
 - Documentation hosting has moved from ReadTheDocs to Netlify
 - Any links in the codebase to help.ctfd.io have been changed to docs.ctfd.io.
 
@@ -619,7 +619,7 @@ Instead of editting `config.py` directly, it's now a better idea to edit `config
   - `challenge.html` now specifies what's required and what's rendered by the theme. This allows the challenge plugin to avoid having to deal with aspects of the challenge besides the description and input.
   - A more complete migration guide will be provided when CTFd v3 leaves beta
 - Display current attempt count in challenge view when max attempts is enabled
-- `get_standings()`, `get_team_stanadings()`, `get_user_standings()` now has a fields keyword argument that allows for specificying additional fields that SQLAlchemy should return when building the response set.
+- `get_standings()`, `get_team_standings()`, `get_user_standings()` now has a fields keyword argument that allows for specifying additional fields that SQLAlchemy should return when building the response set.
   - Useful for gathering additional data when building scoreboard pages
 - Flags can now control the message that is shown to the user by raising `FlagException`
 - Fix `override_template()` functionality
@@ -735,7 +735,7 @@ Instead of editting `config.py` directly, it's now a better idea to edit `config
 
 **General**
 
-- Cache user and team attributes and use those perform certain page operations intead of going to the database for data
+- Cache user and team attributes and use those perform certain page operations instead of going to the database for data
   - After modifying the user/team attributes you should call the appropriate cache clearing function (clear_user_session/clear_team_session)
 - Cache user IPs for the last hour to avoid hitting the database on every authenticated page view
   - Update the user IP's last seen value at least every hour or on every non-GET request
@@ -747,7 +747,7 @@ Instead of editting `config.py` directly, it's now a better idea to edit `config
 - Add bulk selection and deletion for Users, Teams, Scoreboard, Challenges, Submissions
 - Make some Admin tables sortable by table headers
 - Create a score distribution graph in the statistics page
-- Make instance reset more granular to allow for choosing to reset Accounts, Submissions, Challenges, Pages, and/or Notificatoins
+- Make instance reset more granular to allow for choosing to reset Accounts, Submissions, Challenges, Pages, and/or Notifications
 - Properly update challenge visibility after updating challenge
 - Show total possible points in Statistics page
 - Add searching for Users, Teams, Challenges, Submissions
@@ -849,8 +849,8 @@ Instead of editting `config.py` directly, it's now a better idea to edit `config
 **General**
 
 - During setup, admins can register their email address with the CTFd LLC newsletter for news and updates
-- Fix editting hints from the admin panel
-- Allow admins to insert HTML code directly into the header and footer (end of body tag) of pages. This replaces and supercedes the custom CSS feature.
+- Fix editing hints from the admin panel
+- Allow admins to insert HTML code directly into the header and footer (end of body tag) of pages. This replaces and supersedes the custom CSS feature.
   - The `views.custom_css` route has been removed.
 - Admins can now customize the content of outgoing emails and inject certain variables into email content.
 - The `manage.py` script can now manipulate the CTFd Configs table via the `get_config` and `set_config` commands. (e.g. `python manage.py get_config ctf_theme` and `python manage.py set_config ctf_theme core`)
@@ -929,7 +929,7 @@ All CTFd administrators are recommended to take the following steps:
 
 **API**
 
-- Team member removals (`DELETE /api/v1/teams/[team_id]/members`) from the admin panel will now delete the removed members's Submissions, Awards, Unlocks
+- Team member removals (`DELETE /api/v1/teams/[team_id]/members`) from the admin panel will now delete the removed members Submissions, Awards, Unlocks
 
 **Admin Panel**
 
